@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!--클래스-->
+	<ul>
+		<li class="red"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="blue"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="red"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="blue"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="green"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+	</ul>
+
+
+</body>
+
+<script>
+	/**********************************
+	 * 클래스명으로 얻어오기
+	 * - getElementsByClassName
+	 **********************************/
+
+	document.addEventListener("DOMContentLoaded", function () {
+
+		//red테크를 빨간색으로 변경
+		let liRedTags = document.getElementsByClassName("red");
+		console.log(liRedTags);
+		liRedTags[0].style.color = "#ff0000";
+
+		//blue테그를 파란색으로 변경
+		let leBlueTags = document.getElementsByClassName("blue");
+		console.log(leBlueTags);
+		for(let i = 0; i<leBlueTags.length; i++){
+			leBlueTags[i].style.color = "#0000ff";
+		}
+	});
+
+</script>
+
+</html>

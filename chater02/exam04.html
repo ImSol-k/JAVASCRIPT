@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="" rel="stylesheet">
+
+</head>
+
+<body>
+    
+	<h1>자바스크립트</h1>
+	<div id="nav">
+		<ul>
+			<li>게시판</li>
+			<li class="active">갤러리</li>
+			<li>방명록</li>
+		</ul>
+	</div>
+	
+	<div>
+		<p class="red">내용1입니다.</p>
+
+		<p>내용2입니다.</p>
+	</div>
+
+	<form action="" method="">
+		<label>아이디</label>
+		<input type="text" name="userId" value="jung" placeholder="아이디를 입력해주세요"><br>
+		
+		<label>패스워드</label>
+		<input type="password" name="pw" value=""><br>
+
+		<label>이름</label>
+		<input type="text" name="userName" value="정우성"><br>
+		
+		<button type="submit">전송</button>
+	</form>
+</body>
+
+<script>
+
+	/***********************************
+	 * 선택자로 얻어오기
+	 * - querySelector
+	 *  ㄴ한개 얻어오기
+	 * - querySelectorAll
+	 *  ㄴ여러개 얻어오기
+	 ***********************************/
+
+	document.addEventListener("DOMContentLoaded", function(){
+
+		//querySelector
+		let h1Tag = document.querySelector("h1");
+		console.log(h1Tag);
+		h1Tag.style.color = "#ff0000";
+
+		//querySelectorAll
+		let liTags = document.querySelectorAll("li");
+		console.log(liTags);
+		for(let i = 0; i < liTags.length; i++){
+			liTags[i].style.color = "#0000ff";
+		}
+
+		//active 색변경
+		let activeClass = document.querySelector("#nav>ul>li.active");
+		console.log(activeClass);
+		activeClass.style.color = "#00ff00"
+
+		//li, label 빨간색으로 변경하기
+		let leLabel = document.querySelectorAll("#nav>ul>li, label")
+		console.log(leLabel);
+		for(let i = 0; i < leLabel.length; i++){
+			leLabel[i].style.color = "#ff0000";
+		}
+
+		//객체변경
+		let txtNameTag = document.querySelector("input[name='userId']");
+		txtNameTag.style.color = "#00ff00";
+		
+		let lastLiTag = document.querySelector("#nav ul>li:last-child");
+		console.log(lastLiTag);
+		lastLiTag.style.color = "#0000ff";
+		
+	 });
+
+</script>
+
+</html>

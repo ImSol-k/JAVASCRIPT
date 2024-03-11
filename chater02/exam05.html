@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="" rel="stylesheet">
+
+</head>
+
+<body>
+	<h1>자바<strong>스크립트</strong></h1>
+	<div id="nav">
+		<ul>
+			<li id="board"><span>게</span>시판</li>
+			<li id="gallery" class="active"><span>갤</span>러리</li>
+			<li id="board"><span>방</span>명록</li>
+		</ul>
+	</div>
+
+	<form action="" method="">
+		<label class="form-text">아이디</label>
+		<input id="txt-userId" class="form-txt" type="text" name="userId" value="jung" placeholder="아이디를 입력해주세요"><br>
+
+		<label class="form-text">패스워드</label>
+		<input type="password" name="pw" value=""><br>
+
+		<label class="form-text">이름</label>
+		<input type="text" name="userName" value="정우성"><br>
+
+		<button type="submit">전송</button>
+	</form>
+
+	<a class="box_red" href="https://www.naver.com" target="_blank">네이버</a>
+
+
+	<p id="p01">자바<strong>스크립트</strong></p>
+	<p id="p02">자바<strong>스크립트</strong></p>
+</body>
+
+<script>
+
+	/**********************************************
+	 * 테그 이름 알기
+	 * - 변수이름.tagName (테그이름 대문자로 출력해줌)
+	 **********************************************/
+
+	document.addEventListener("DOMContentLoaded", function () {
+		let tag01 = document.querySelector("#nav");
+		console.log(tag01, "/ .tagName",tag01.tagName);
+
+		let tag02 = document.querySelector("[target='_blank']");
+		console.log(tag02, "/ .tagName",tag02.tagName);
+
+		let tag03 = document.querySelector("div");
+		console.log(tag02, "/ .tagName",tag03.tagName)
+
+		let tags04 = document.querySelectorAll("ul>il")
+		console.log(tags04);
+		for(let i = 0; i < tags04.length; i++){
+			console.log(tags04[i].id);
+		}
+
+		/***********************************************
+		 * 클래스명 알기
+		 ***********************************************/
+		
+		let tags05 = document.querySelectorAll("form>label");
+		console.log(tags05);
+		console.log(tags05[0].className);
+
+		let tag06 = document.querySelector("a");
+		console.log(tag06);
+
+		//기타 속성값도 다 불러 올 수 있음
+		let tag07 = document.querySelector("#txt-userId");
+		console.log(tag07);
+		console.log(tag07.id);
+		console.log(tag07.tagName);
+		console.log(tag07.className);
+		console.log(tag07.type);
+		console.log(tag07.name);
+		console.log(tag07.value);
+
+		let tag08 = document.querySelector("a");
+		console.log(tag08);
+		console.log(tag08.href);
+		console.log(tag08.innerHTML);
+		console.log(tag08.textContent);
+
+		/*********************************************
+		 * innerHTML, textContent의 차이
+		 *  -innerHTML : HTML태그까지 보여줌
+		 *  -textContent : HTML태그는 생략하고 보여줌
+		 *********************************************/
+
+		let tag09 = document.querySelector("h1");
+		console.log(tag09);
+		console.log(tag09.innerHTML);
+		console.log(tag09.textContent);
+
+		let tag10 = document.querySelector("li");
+		console.log(tag10);
+		console.log(tag10.innerHTML);
+		console.log(tag10.textContent);
+		
+	});
+
+
+</script>
+
+</html>

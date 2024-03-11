@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--아이디-->
+    <ul>
+        <li id="first"> 텍스트1 텍스트1 텍스트1 텍스트1 텍스트1 </li>
+        <li id="second"> 텍스트2 텍스트2 텍스트2 텍스트2 텍스트2 </li>
+        <li id="third"> 텍스트3 텍스트3 텍스트3 텍스트3 텍스트3 </li>
+        <li id="fourth"> 텍스트4 텍스트4 텍스트4 텍스트4 텍스트4 </li>
+        <li id="first"> 텍스트1-1 텍스트1-1 텍스트1-1 텍스트1-1 텍스트1-1 </li>
+    </ul>
+
+
+</body>
+
+<script>
+
+    /***********************************
+     * 이벤트 함수
+     * - getElementById
+     *  ㄴ 하나의 값만 변환 할 수 있다.
+     ***********************************/
+
+    //DOM tree 생성 완료 =================================================
+    document.addEventListener("DOMContentLoaded", function(){
+        console.log("DOM tree 완료");
+
+        //seTag라는 변수에 second를 담아줌
+        let seTag = document.getElementById("second");
+        console.log(seTag);
+
+        //테그의 색상 변경
+        //원본이 변경됨
+        seTag.style.color = "#ff0000"
+
+        //다른테그로 연습 ========================================
+        //third
+        let thTag = document.getElementById("third");
+        thTag.style.color = "#0000ff";
+        //fourth
+        let foTag = document.getElementById("fourth");
+        foTag.style.color = "#00ff00";
+
+        let fiTag = document.getElementById("first");
+        console.log(fiTag);
+
+    });
+
+    //페인팅작업이 완료
+    window.addEventListener("load", function(){
+        console.log("페이팅 완료");
+    });
+</script>
+
+</html>
