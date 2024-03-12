@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="./cal.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+	<div id="cal">
+		<input id="display" type="text"><br>
+
+		<div id="btnArea">
+			<button id="btn9" type="button">9</button>
+			<button id="btn8" type="button">8</button>
+			<button id="btn7" type="button">7</button>
+
+			<button id="btnDiv" type="button">/</button>
+			<br>
+
+			<button id="btn6" type="button">6</button>
+			<button id="btn5" type="button">5</button>
+			<button id="btn4" type="button">4</button>
+
+			<button id="btnMulti" type="button">*</button>
+			<br>
+
+			<button id="btn3" type="button">3</button>
+			<button id="btn2" type="button">2</button>
+			<button id="btn1" type="button">1</button>
+
+			<button id="btnPlus" type="button">+</button>
+			<br>
+
+			<button id="btnClear" type="button">C</button>
+			<button id="btn0" type="button">0</button>
+			<button id="btnEqual" type="button">=</button>
+			<button id="btnMinus" type="button">-</button>
+			<br>
+		</div>
+
+
+	</div>
+
+
+</body>
+
+
+<script>
+
+	/*************************************
+	 * 계산기 만들기
+	 *************************************/
+
+	document.addEventListener("DOMContentLoaded", function () {
+
+		//숫자입력 ================================================
+		//버튼불러오기
+		let btnNum = [];
+		btnNum[0] = document.querySelector("#btn0");
+		btnNum[1] = document.querySelector("#btn1");
+		btnNum[2] = document.querySelector("#btn2");
+		btnNum[3] = document.querySelector("#btn3");
+		btnNum[4] = document.querySelector("#btn4");
+		btnNum[5] = document.querySelector("#btn5");
+		btnNum[6] = document.querySelector("#btn6");
+		btnNum[7] = document.querySelector("#btn7");
+		btnNum[8] = document.querySelector("#btn8");
+		btnNum[9] = document.querySelector("#btn9");
+		//입력
+		for (let i = 0; i < btnNum.length; i++) {
+			btnNum[i].addEventListener("click", function () {
+				console.log(i);
+				document.getElementById("display").value += i;
+			});
+		}
+		
+		//기호 =====================================================
+		let num01, symbol;
+		
+		let btnSymbol = [];
+		btnSymbol[0] = document.querySelector("#btnPlus");
+		btnSymbol[1] = document.querySelector("#btnMinus");
+		btnSymbol[2] = document.querySelector("#btnMulti");
+		btnSymbol[3] = document.querySelector("#btnDiv");
+		//symbol이 true일때(계산기호는 중복불가)
+
+		for (let i = 0; i < btnSymbol.length; i++) {
+			btnSymbol[i].addEventListener("click", function () {
+				let check = true;
+				console.log(btnSymbol[i]);
+				//계산하기위해서 기호입력 전까지 받은 숫자를 num01에 Number형으로 저장
+				num01 = Number(document.getElementById("display").value);
+				console.log("num01 = " + num01);
+				//symbol에 기호저장
+				switch (btnSymbol[i]) {
+					case btnSymbol[0]:
+						symbol = "+";
+						break;
+					case btnSymbol[1]:
+						symbol = "-";
+						break;
+					case btnSymbol[2]:
+						symbol = "*";
+						break;
+					case btnSymbol[3]:
+						symbol = "/";
+						break;
+					default:
+						break;
+				}
+				//화면에 기호출력
+				if (check == true) {
+					document.getElementById("display").value += symbol;
+					check = false;
+				}
+			});
+		}
+
+		//계산 =====================================================
+		
+		let num02, reNum, sum;
+		let btnEqual = document.querySelector("#btnEqual");
+		btnEqual.addEventListener("click", function () {
+			let sumCheck = true;
+			console.log("btnEqual");
+			//input으로 입력받은 값불러오기
+			num02 = document.getElementById("display").value;
+			//전에 입력했던 num01, symbol값 빼고 reNum에 Number형으로 저장
+			reNum = Number(num02.replace((num01 + symbol), ""));
+			console.log(reNum);
+			//계산하기
+			if (symbol == "+") {
+				sum = num01 + reNum;
+			} else if (symbol == "-") {
+				sum = num01 - reNum;
+			} else if (symbol == "*") {
+				sum = num01 * reNum;
+			} else if (symbol == "/") {
+				sum = num01 / reNum;
+			}
+			if(sumCheck == true){
+				document.getElementById("display").value += (" = "+sum);
+				sumCheck = false;	
+			}
+		});
+
+		//초기화 ===================================================
+		let btnClear = document.querySelector("#btnClear");
+		btnClear.addEventListener("click", function () {
+			console.log("btnClear");
+			document.getElementById("display").value = "";
+			check = true;
+		});
+	});
+</script>
+
+
+</html>

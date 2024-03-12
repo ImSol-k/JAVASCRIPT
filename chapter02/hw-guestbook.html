@@ -46,15 +46,12 @@
 		//클릭시 이벤트함수 호출
 		btnWrite.addEventListener("click", function(){
 			//태그 불러오기
-			let idName = document.getElementById("#name");
-			let idPw = document.getElementById("#pw");
-			let idContent = document.getElementById("#content");
-			console.log(name, pw, content);
 			let guestbook = {
-				name : idName.value,
-				pw : idPw.value,
-				idContent : idContent.value
+				name : document.getElementsByName("name")[0].value,
+				pw : document.getElementsByName("pw")[0].value,
+				content : document.getElementsByName("content")[0].value
 			}
+			console.log(guestbook);
 		});
 	});
 
