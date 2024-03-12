@@ -25,7 +25,7 @@
                 <col style="width: 100px;">
                 <col style="width: 100px;">
             </colgroup>
-            <tr>
+            <tr id="number">
                 <td>?</td>
                 <td>?</td>
                 <td>?</td>
@@ -45,8 +45,40 @@
 </body>
 
 <script>
+    /************************************
+     * 로또구현
+     *  -Math.random()함수
+     ************************************/
 
+    document.addEventListener("DOMContentLoaded", function(){
+        
+        //버튼 불러오기
+        let btnMakeNo = document.querySelector("#btnMakeNo");
+        //console.log(btnMakeNo)
+        //버튼을 누르면 이벤트함수 호출
+        btnMakeNo.addEventListener("click", function(){
+            //태그 불러오기
+            let tdTag = document.querySelectorAll("#number>td");
+            console.log(tdTag);
+            //중복체크용 값 저장배열
+            let num = [];
+            
+            //랜덤숫자 구하기
+            for(let i = 0; i < tdTag.length; i++){
+                num[i] = Math.floor((Math.random() * 45) + 1);
+                for(let j = 0; j < i; j++){
+                    if(num[i] == num[j]){
+                        i--;
+                    }
+                }
+            }
+            //랜덤숫자 적용
+            for(let i = 0; i < tdTag.length; i++){
+                tdTag[i].textContent = num[i];
+            }
+        });
 
+    });
 
 </script>
 
