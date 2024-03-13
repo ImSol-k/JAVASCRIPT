@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <style>
+
+    </style>
+
+
+    </head>
+
+    <body>
+        <form id="guestForm" action="http://localhost:8888/mysite6/guestbook/add" method="get">
+            <table border="1" width="540px">
+                <tr>
+                    <td>이름</td><td><input type="text" name="name"></td>
+                    <td>비밀번호</td><td><input type="password" name="pw"></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><textarea cols="72" rows="5" name="content"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button id="btnWrite" type="submit">등록</button></td>
+                </tr>
+            </table>
+        </form>
+        <br>
+
+    </body>
+
+    <script>
+
+        /**************************************
+		 * form사용
+		 *  -파라미터이용 데이터전송
+		 *  -trim() 으로 앞뒤 공백제거
+		 **************************************/
+
+        document.addEventListener("DOMContentLoaded", function(){
+
+            let guestForm = document.querySelector("#guestForm");
+            guestForm.addEventListener("submit", function(event){
+                console.log("전송");
+                event.preventDefault();
+				
+				//이름체크
+                let nameTag = document.querySelector('[name= "name"]');
+                let name = nameTag.value.trim();
+				if(name == ""){
+					//폼기능 제한후 경고창
+					event.preventDefault();
+					window.alert("이름을 입력해주세요");
+					//이벤트 전파 막기 다음으로 안넘어감
+					return false;
+				}
+				
+				//패스워드 체크
+				let pwTag = document.querySelector('[name= "pw"]');
+				let pw = pwTag.value.trim();
+				if(pw == ""){
+					event.preventDefault();
+					window.alert("패스워드를 입력해주세요");
+					//이벤트 전파 막기 다음으로 안넘어감
+					return false;
+				}
+				
+				//내용체크
+				let contentTag = document.querySelector('[name= "content"]');
+				let content = contentTag.value;
+				if(content == ""){
+					event.preventDefault();
+					window.alert("내용을 입력해주세요");
+					//이벤트 전파 막기 다음으로 안넘어감
+					return false;
+				}
+
+				alert("전송완료");
+            });
+
+        });
+
+
+    </script>
+
+</html>

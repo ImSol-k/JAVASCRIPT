@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <style>
+        ul{
+            width: 200px;
+            padding: 20px;
+            background-color: #00ffff;
+        }
+        li{
+            border:1px solid #000000;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <ul>
+        <li>첫번째 아이템 입니다</li>
+        <li>두번째 아이템 입니다</li>
+        <li>세번째 아이템 입니다</li>
+        <li>네번째 아이템 입니다</li>
+        <li>다섯번째 아이템 입니다</li>
+    </ul>
+    <button id="btnAfter" type="button">뒤에추가</button>
+</body>
+
+<script>
+
+    /******************************************
+     * 이벤트 함수
+     *  -insertAdjacentHTML 복습
+     *  -파라미터 자식으로 태그얻어오기
+     ******************************************/
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        let btnAfter = document.querySelector("#btnAfter");
+        console.log(btnAfter);
+
+        //버튼 클릭시
+        btnAfter.addEventListener("click", function(){
+            let ulTag = document.querySelector("ul");
+            console.log(ulTag);
+
+            let str = "<li>뒤에 추가된 아이템</li>";
+            ulTag.insertAdjacentHTML("beforeend",str);
+        });
+
+        //파라미터 사용
+        let ulTag = document.querySelector("ul");
+        ulTag.addEventListener("click", function(event){
+            console.log("click");
+            //tagName는 태그를 대문자로 반환해줌
+            //클릭한 요소가 le태그이면 작동
+            if(event.target.tagName == "LI"){
+                event.target.textContent = ">_0";
+            }
+        });
+
+
+        /******************************
+         * li태그 클릭 이벤트
+         *  -기존 사용방식
+         ******************************/
+        // let liTags = document.querySelectorAll("li");
+        // for(let i = 0; i <liTags.length; i++){
+        //     liTags[i].addEventListener("click", function(){
+        //     let ulTag = document.querySelector("ul");
+        //     let str = "<li>>_0</li>";
+        //     ulTag.insertAdjacentHTML("afterbegin", str);
+        // });
+        // }
+        
+
+
+    });
+</script>
+
+</html>
